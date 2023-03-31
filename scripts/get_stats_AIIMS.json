@@ -1,0 +1,6 @@
+{
+    "directory_data": "/home/pcallec/analyze_images/data/LighOCT/Dataset/AIIMS_Dataset",
+    "type_file":"bmp",
+    "directory_output": "/home/pcallec/analyze_images/results",
+    "suffix": "data_AIMMS"
+}
