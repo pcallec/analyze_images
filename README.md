@@ -52,6 +52,8 @@ example shape list summary
 
 ### `rename_file_name.py`
 
+e.g. 
+rename_pig_kidney_subset.json
 ```json
 {
     "directory_data": "/home/pcallec/mif_outer/data/pig_kidney_subset",
