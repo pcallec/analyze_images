@@ -1,6 +1,6 @@
 # About The Project
 
-This project will allow to get some statistics before preprocessing your images.
+This project will allow to get some statistics and useful preprocessing utilities before using your images in ML models.
 
 # Getting Started
 
@@ -13,6 +13,7 @@ pip install -e .
 
 ## Usage
 
+### `get_stats.py`
 e.g.
 ```bash
 python get_stats.py -j get_stats_AIIMS.json
@@ -49,6 +50,26 @@ example shape list summary
 ...
 ```
 
+### `rename_file_name.py`
+
+```json
+{
+    "directory_data": "/home/pcallec/mif_outer/data/pig_kidney_subset",
+    "type_file": "jpg",
+    "list_old_name":["pelvis_calyx"],
+    "list_new_name":["pelvis-calyx"]
+}
+```
+
+* `directory_data`: path of data
+* `type_file`: type of file to change name
+* `list_old_name`: list of string that if found in file would be modified
+*  `list_new_name`: list of string that would be used to rename.
+
+e.g.
+```bash
+python rename_file_name.py -j rename_pig_kidney_subset.json
+```
 
 ## Contact
 
