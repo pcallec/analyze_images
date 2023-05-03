@@ -1,0 +1,6 @@
+{
+    "directory_data": "/home/pcallec/mif_outer/data/pig_kidney_subset",
+    "type_file": "jpg",
+    "list_old_name":["pelvis_calyx"],
+    "list_new_name":["pelvis-calyx"]
+}
