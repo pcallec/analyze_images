@@ -124,7 +124,7 @@ EPOCHS = 6
 
 best_vloss = float("inf")
 
-folder_path = "/home/pcallec/analyze_images/results/basic_checkpoint_pytorch/"
+folder_path = "/scratch/paulcalle/basic_checkpoint_pytorch/"
 checkpoint_path = Path(folder_path) / "checkpoint.pth"
 backup_checkpoint_path = Path(folder_path) / "checkpoint_backup.pth"
 checkpoint_interval = 2

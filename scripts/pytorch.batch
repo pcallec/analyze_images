@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#SBATCH --partition=debug_gpu
+#SBATCH --output=%x_%J_stdout.txt
+#SBATCH --error=%x_%J_stderr.txt
+#SBATCH --nodes=1
+#SBATCH --mem=10G
+#SBATCH --gres=gpu:1
+#SBATCH --time=00:05:00
+#SBATCH --job-name=pytorch
+#SBATCH --mail-user=pcallec@ou.edu
+#SBATCH --mail-type=ALL
+#SBATCH --chdir=/ourdisk/hpc/prebiotics/omicsbio/paulcalle/analyze_images/scripts
+
+#################################################
+
+python basic_checkpoint_pytorch.py
