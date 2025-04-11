@@ -60,17 +60,16 @@ class GarmentClassifier(nn.Module):
         x = self.fc3(x)
         return x
 
+
 # Instantiate the model
 model = GarmentClassifier()
-
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
 # Loss function
 loss_fn = torch.nn.CrossEntropyLoss()
 
 # Set up the optimizer
 optimizer = torch.optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
-
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model.to(device)
 
 # ------------------------------
 # Step 3: Training loop for a single epoch
@@ -129,6 +128,8 @@ checkpoint_path = Path(folder_path) / "checkpoint.pth"
 backup_checkpoint_path = Path(folder_path) / "checkpoint_backup.pth"
 checkpoint_interval = 2
 
+
+
 Path(folder_path).mkdir(parents=True, exist_ok=True)
 
 if checkpoint_path.exists():
@@ -156,7 +157,8 @@ if checkpoint_path.exists():
             print(f"Resuming training from epoch {epoch_start}")
         except Exception as e:
             print(f"Checkpoint was found but could not be loaded correctly: {e}")
-    
+
+
 # Train for specified number of epochs
 for epoch in range(epoch_start, EPOCHS):
     print('EPOCH {}:'.format(epoch + 1))
@@ -174,9 +176,10 @@ for epoch in range(epoch_start, EPOCHS):
     with torch.no_grad():
         for i, vdata in enumerate(validation_loader):
             vinputs, vlabels = vdata
+            vinputs, vlabels = vinputs.to(device), vlabels.to(device)
             voutputs = model(vinputs)
             vloss = loss_fn(voutputs, vlabels)
-            running_vloss += vloss
+            running_vloss += vloss.item()
 
     avg_vloss = running_vloss / (i + 1)
     print('LOSS train {} valid {}'.format(avg_loss, avg_vloss))
